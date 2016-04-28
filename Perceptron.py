@@ -8,15 +8,19 @@ class Perceptron():
         
     
     def setInput(self, n, value):
-        pass
+        self.inputs[n] = value
         
     
-    def setAllInput(self, values):
-        pass
+    def setAllInputs(self, values):
+        self.inputs = values
         
         
     def setWeight(self, n, weight):
-        pass
+        self.weights[n] = weight
+
+
+    def setAllWeights(self, weights):
+        self.weights = weights
         
         
     def setFunc(self, func):
@@ -25,9 +29,13 @@ class Perceptron():
         
         
     def calculate(self):
-        pass
-        
+        summa = 0
+        n = 0
+        for i in self.inputs:
+            summa += i * self.weights[n]
+            n += 1
+        return summa
         
     def get(self):
-        sum = self.calculate()
-        return self.func(sum)
+        summa = self.calculate()
+        return self.func(summa)
