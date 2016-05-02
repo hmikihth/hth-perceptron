@@ -10,5 +10,5 @@ class HebbianRule():
         self.learning_rate = learning_rate
         
         
-    def new_weight(old_weight, input_value, output_value):
+    def new_weight(self, old_weight, input_value, output_value):
         return old_weight + self.learning_rate * input_value * output_value
