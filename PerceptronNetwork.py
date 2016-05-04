@@ -33,7 +33,9 @@ class PerceptronNetwork():
         
         
     def get_output(self):
-        pass
+        result = []
+        for node in self.layers[self.number_of_outputs]:
+            result.append(node.get())
     
     
     def teach(self):

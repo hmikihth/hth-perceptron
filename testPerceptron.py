@@ -4,6 +4,10 @@ import unittest
 from inspect import isfunction
 from Perceptron import Perceptron
 
+def myfunc(summa):
+    if summa == 6:
+        return True
+    return False
 
 class TestPerceptron(unittest.TestCase):
     def setUp(self):
@@ -43,9 +47,6 @@ class TestPerceptron(unittest.TestCase):
         
         
     def test_setFunc(self):
-        def myfunc():
-            pass
-            
         self.perceptron.setFunc(myfunc)
         self.assertTrue(isfunction(self.perceptron.func))
         
@@ -53,22 +54,19 @@ class TestPerceptron(unittest.TestCase):
     def test_calculate(self):
         self.perceptron.setAllInputs([1,1,1])
         self.perceptron.setAllWeights([1,2,3])
-        summa = self.perceptron.calculate()
-        self.assertEqual(summa, 6)
+        self.perceptron.setFunc(myfunc)
+        self.perceptron.calculate()
+        self.assertTrue(self.perceptron.output)
 
          
     def test_get(self):
-        def myfunc(summa):
-            if summa == 6:
-                return True
-            return False
             
         self.perceptron.setAllInputs([1,1,1])
         self.perceptron.setAllWeights([1,2,3])
-        summa = self.perceptron.calculate()
         self.perceptron.setFunc(myfunc)
+        self.perceptron.calculate()
         self.assertTrue(self.perceptron.get())
 
         self.perceptron.setAllWeights([1,2,4])
-        summa = self.perceptron.calculate()
+        self.perceptron.calculate()
         self.assertFalse(self.perceptron.get())

@@ -35,9 +35,8 @@ class Perceptron():
         for i in self.inputs:
             summa += i * self.weights[n]
             n += 1
+        self.output = self.func(summa)
         return summa
-
         
     def get(self):
-        summa = self.calculate()
-        return self.func(summa)
+        return self.output
