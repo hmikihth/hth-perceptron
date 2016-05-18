@@ -24,7 +24,8 @@ class PerceptronNetwork():
         for n in range(self.number_of_hidden_layers):
             layer = []
             for m in range(self.retina.size):
-                layer.append(Perceptron())
+                p = Perceptron()
+                layer.append(p)
             self.layers.append(layer)
         layer = []
         for n in range(self.number_of_outputs):
